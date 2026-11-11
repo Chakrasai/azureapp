@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure SQL | Employees</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">AZURE SQL DATABASE</p>
+                <h1>Employee workspace</h1>
+                <p class="subtitle">Manage employee records stored in your SQL Server database.</p>
+            </div>
+            <span class="status"><i></i> Connected workspace</span>
+        </header>
+
+        <section class="summary">
+            <div class="summary-card">
+                <span>Total employees</span>
+                <strong id="employee-count">—</strong>
+            </div>
+            <div class="summary-card">
+                <span>Average salary</span>
+                <strong id="average-salary">—</strong>
+            </div>
+            <div class="summary-card accent">
+                <span>Database</span>
+                <strong>Azure SQL</strong>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">EMPLOYEE RECORDS</p>
+                    <h2>All employees</h2>
+                </div>
+                <button class="button primary" id="add-employee">+ Add employee</button>
+            </div>
+            <div id="message" class="message" role="status"></div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Salary</th>
+                            <th class="actions-heading">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employee-list">
+                        <tr><td colspan="4" class="empty">Loading employees…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="employee-dialog">
+        <form id="employee-form" method="dialog">
+            <div class="dialog-heading">
+                <div>
+                    <p class="eyebrow">EMPLOYEE RECORD</p>
+                    <h2 id="dialog-title">Add employee</h2>
+                </div>
+                <button type="button" class="close" id="close-dialog" aria-label="Close">×</button>
+            </div>
+            <input type="hidden" id="employee-id">
+            <label for="name">Name</label>
+            <input id="name" name="name" maxlength="100" required placeholder="e.g. Alex Johnson">
+            <label for="department">Department</label>
+            <input id="department" name="department" maxlength="100" required placeholder="e.g. Engineering">
+            <label for="salary">Annual salary</label>
+            <input id="salary" name="salary" type="number" min="0" step="0.01" required placeholder="e.g. 85000">
+            <div class="dialog-actions">
+                <button type="button" class="button secondary" id="cancel-dialog">Cancel</button>
+                <button type="submit" class="button primary">Save employee</button>
+            </div>
+        </form>
+    </dialog>
+    <script src="/app.js"></script>
+</body>
+</html>
